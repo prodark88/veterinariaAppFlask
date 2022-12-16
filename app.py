@@ -17,7 +17,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/')
+@app.route('/registro')
 def registro():
     return render_template('registro.html')
 
