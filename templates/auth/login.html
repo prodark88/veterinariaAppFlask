@@ -1,0 +1,45 @@
+{% extends './layout.html'%}
+
+{% block tittle %}LOGIN{% endblock %}
+
+{% block CustomCSS %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/login.css')}} ">
+{% endblock %}
+
+{% block body %}
+<main class="form-signin w-100 m-auto">
+  <form action="=/login" method="POST">
+    <img class="mb-4" src="{{ url_for('static', filename='img/logo.jpg')}}" alt="" width="150" height="147">    
+    {% with messages = get_flashed_messages() %}
+    {% if messsages  %}
+    <br />
+    {% for message in messages %} 
+    <div class="alert alert-${type} alert-dismissible" role="alert">
+        <strong> {{ message }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor  %}
+    {% endif  %} 
+    {% endwith  %}
+    
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+  </form>
+</main>
+{% endblock %}
